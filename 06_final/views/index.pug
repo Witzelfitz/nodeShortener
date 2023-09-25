@@ -1,0 +1,18 @@
+doctype html
+html
+  head
+    title Shorten URL
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    link(rel="stylesheet" href="/css/styles.css")
+  body
+    h1 URL Shortener
+form(action="/shorten" method="post")
+  div
+    label(for="originalUrl") Enter URL:
+    input(type="text" name="originalUrl" required)
+  button(type="submit") Shorten    
+if shortUrl
+  div
+    label Shortened URL:
+    input#shortenedUrl(type="text" value=shortUrl readonly)
+
