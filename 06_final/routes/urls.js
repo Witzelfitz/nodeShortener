@@ -4,8 +4,9 @@ import { Url, validateUrl } from '../models/url.js';
 const router = express.Router();
 router.use(express.json());
 
-router.get('/test', (req, res) => {
-    res.send('Test URL successful')
+router.get('/all', async (req, res) => {
+    const urls = await Url.find().sort('-createdAt'); //sort by date
+    res.send(urls);
 }
 );
 
