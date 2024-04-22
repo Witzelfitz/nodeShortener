@@ -38,21 +38,15 @@ router.get('/:shortUrl', async (req, res) => {
 });
 
 router.delete('/:shortUrl', async (req, res) => {
-
-    // get the ID of the url to be deleted
-    const urlObject = await Url.findOne({ shortUrl: req.params.shortUrl });
-    if (!urlObject) return res.status(404).send('The Url with the given shortUrl was not found.');
-
-    // get the ID of the document
-    const urlId = urlObject._id;
-
-    // delete the document
-
-    const url = await Url.findByIdAndRemove(urlId);
-    if (!url) return res.status(404).send('The Url with the given ID was not found.');
-
-    // Return the updated costumer
-    res.send(url);
+    try {
+        const result = await Url.deleteOne({ shortUrl: req.params.shortUrl });
+        if (result.deletedCount === 0) {
+            return res.status(404).send('The URL with the given shortUrl was not found.');
+        }
+        res.send({ message: 'URL successfully deleted' });
+    } catch (error) {
+        res.status(500).send('Error deleting the URL: ' + error.message);
+    }
 });
 
 
