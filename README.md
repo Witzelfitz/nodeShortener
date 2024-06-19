@@ -99,3 +99,15 @@ In the folder "05_redirection" you can find the finished redirection.
 
 ### Final Project
 In the folder "06_final" you can find the finished project.
+
+## Additional Functions with Auth Middleware
+The `07_additionalFunctions` folder has been added as an extension of the `06_final` project. This new folder includes the implementation of auth middleware to provide update functionality for links to users that are logged in. The auth middleware uses a simple token-based authentication system for demonstration purposes.
+
+### Setting Up and Using Auth Middleware
+To use the auth middleware for updating links, follow these steps:
+1. Ensure you have a valid token for authentication. For demonstration purposes, a token named "validToken" is considered valid.
+2. Make a PUT request to the `/yourShortUrl` endpoint with the updated link information in the request body.
+3. Include the valid token in the request headers or cookies as `authToken`.
+4. If the token is valid, the link will be updated. Otherwise, an error message will be returned.
+
+This functionality is aimed at enhancing the security and usability of the URL shortener application by allowing only authenticated users to update their links.
